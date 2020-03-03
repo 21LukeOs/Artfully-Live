@@ -1,7 +1,7 @@
 {
   "name": "artfully-live",
   "version": "1.0.0",
-  "description": "photography auction curated by users",
+  "description": "photography contest curated by users",
   "main": "server.js",
   "scripts": {
     "start": "node server",
