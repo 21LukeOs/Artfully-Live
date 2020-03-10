@@ -11,7 +11,7 @@ const PhotoSchema = new mongoose.Schema({
   votes: [
     {
       user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
       }
     }
