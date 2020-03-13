@@ -1,0 +1,101 @@
+@import '../../palette.scss';
+@import '../../mixins.scss';
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("../../assets/fonts/Raleway-Regular.ttf");
+}
+
+.post {
+  min-height:100vh;
+
+  // &__logo {
+  //   width: 240px;
+  //   padding: 20px;
+  // }
+
+  // &__title {
+  //   text-align: center;
+  // }
+
+  &__post-pic {
+    // min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__upload-form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  &__upload-file {
+    color: $color3;
+  }
+
+  &__upload-label {
+    margin: 30px 0 10px 0;
+    color: $color3;
+    font-family: 'Raleway';
+  }
+
+  &__upload-input {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: $color3;
+    border: 3px solid black;
+  }
+
+  &__upload-input:focus {
+    outline: transparent;
+  }
+
+  &__upload-file input {
+    padding: 5px;
+  }
+
+  &__upload-submit {
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    color: $color3;
+    background-color: $color1;
+    background-color: rgb(29, 29, 29);
+    border: 2px solid black;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+
+  &__upload-submit:active {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: scale(0.99);  
+  }
+  
+  &__upload-submit:focus {
+    outline: transparent;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__nav > div {
+    width: 80%;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  &__leaderboard {
+    width: 80%;
+    margin-top: 50px;
+  }
+
+  &__vote {
+    width: 80%;
+    margin-top: 50px;
+  }
+}

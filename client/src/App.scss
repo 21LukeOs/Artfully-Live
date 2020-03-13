@@ -1,0 +1,17 @@
+@import './palette.scss';
+@import './mixins.scss';
+
+.app {
+  width: 100%;
+  height: 100%;
+  background-color: $color1;
+  padding-bottom: 50px;
+
+  @include tablet() {
+    padding: 10px 10px 50px 10px;
+  }
+
+  @include desktop() {
+    padding: 0 300px 80px 300px;
+  }
+}

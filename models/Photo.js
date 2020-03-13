@@ -5,8 +5,17 @@ const PhotoSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
+  title: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
   photo: {
-    photo: String
+    type: String,
+    required: true
   },
   votes: [
     {
