@@ -21,16 +21,18 @@ const FileUpload = () => {
     formData.append('title', fileTitle)
 
     try {
-      await axios.post('/photos', formData, {
+      const res = await axios.post('/api/photos', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          // 'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWU2YjE5MmNlMmQ2YzI0ODFjZDUxYWUxIn0sImlhdCI6MTU4NDQ2MTU3NCwiZXhwIjoxNTg0NTMzNTc0fQ.6wT6pTd0MkkAzpDwKmEH0lvETbj3VbgX4DaL4BoJxzg'
         }
       });
-
-
+      
+      console.log(res);
     } catch (err) {
       console.error(err);
     }
+    setFileTitle('');
   };
 
   return (
@@ -38,33 +40,13 @@ const FileUpload = () => {
       <div className="post__post-pic">
         <form className="post__upload-form" id="picForm" onSubmit={onSubmit} >
           <label htmlFor="title" className="post__upload-title-label post__upload-label" >Title</label>
-            <input type="text" id="title" name="title" className="post__upload-title post__upload-input" onChange={titleChange} />
+            <input type="text" id="title" name="title" className="post__upload-title post__upload-input" value={fileTitle} onChange={titleChange} required />
           <label htmlFor="file" className="post__upload-file-label post__upload-label" >Image To Upload</label>
           <input type="file" id="file" className="post__upload-file" onChange={fileChange} />
-          <button type="submit" className="post__upload-submit" form="picForm" >Submit</button>
+          <button type="submit" className="post__upload-submit" >Submit</button>
         </form>
       </div>
     </div>
-    
-    // <form onSubmit={onSubmit}>
-    //   <div className='custom-file mb-4'>
-    //     <input
-    //       type='file'
-    //       className='custom-file-input'
-    //       id='customFile'
-    //       onChange={onChange}
-    //     />
-    //     <label className='custom-file-label' htmlFor='customFile'>
-    //       {filename}
-    //     </label>
-    //   </div>
-
-    //   <input
-    //     type='submit'
-    //     value='Upload'
-    //     className='btn btn-primary btn-block mt-4'
-    //   />
-    // </form>
 
   );
 };
