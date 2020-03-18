@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './FileUploader.scss';
 import axios from 'axios';
 
-const FileUpload = () => {
+const FileUploader = () => {
   const [file, setFile] = useState('');
   const [fileTitle, setFileTitle] = useState('');
 
@@ -24,7 +24,7 @@ const FileUpload = () => {
       const res = await axios.post('/api/photos', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          // 'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWU2YjE5MmNlMmQ2YzI0ODFjZDUxYWUxIn0sImlhdCI6MTU4NDQ2MTU3NCwiZXhwIjoxNTg0NTMzNTc0fQ.6wT6pTd0MkkAzpDwKmEH0lvETbj3VbgX4DaL4BoJxzg'
+          'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWU2YjE5MmNlMmQ2YzI0ODFjZDUxYWUxIn0sImlhdCI6MTU4NDQ2MTU3NCwiZXhwIjoxNTg0NTMzNTc0fQ.6wT6pTd0MkkAzpDwKmEH0lvETbj3VbgX4DaL4BoJxzg'
         }
       });
       
@@ -51,4 +51,4 @@ const FileUpload = () => {
   );
 };
 
-export default FileUpload;
+export default FileUploader;

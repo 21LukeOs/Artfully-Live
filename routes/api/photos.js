@@ -38,7 +38,7 @@ router.post(
 		try {
 			const form = formidable();
 
-			form.parse(req, (err, fields, files) => {
+			const formData = form.parse(req, (err, fields, files) => {
 				if (err) {
 					next(err);
 					return;
@@ -64,7 +64,8 @@ router.post(
 				);
 
 				res.json({ fields, files });
-			});
+      });
+      console.log(formData);
 		} catch (err) {
 			console.log(err.message);
 			res.status(500).send('Server Error');

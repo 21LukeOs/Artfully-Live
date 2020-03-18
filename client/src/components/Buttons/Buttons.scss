@@ -1,0 +1,25 @@
+@import '../../style-presets/palette.scss';
+@import '../../style-presets/mixins.scss';
+
+.button {
+  width: 100%;
+  padding: 20px;
+  border-radius: 50px;
+  color: $color8;
+  font-size: 24px;
+  background-color: $color1;
+  background-color: rgb(29, 29, 29);
+  border: 3px solid black;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.5);
+  
+}
+
+.button:active {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: scale(0.99);  
+}
+
+.button:focus {
+  outline: transparent;
+}
+
