@@ -1,0 +1,13 @@
+@import '../../style-presets/palette.scss';
+@import '../../style-presets/mixins.scss';
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("../../assets/fonts/Raleway-Regular.ttf");
+}
+
+.logout {
+  width: 100%;
+  background-color: $color1;
+  padding: 20px 0;
+}

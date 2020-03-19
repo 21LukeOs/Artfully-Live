@@ -1,5 +1,4 @@
-import React from 'react';
-import './App.scss';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Landing from './components/Landing/Landing';
 import Upload from './components/Upload/Upload';
@@ -10,8 +9,20 @@ import Alert from './components/Alert/Alert';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
+import { loadUser } from './actions/auth';
+import setAuthToken from './utils/setAuthToken';
 
-function App() {
+import './App.scss';
+
+if(localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
+const App = () => {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
 	return (
 		<Provider store={store}>
       <Router>
