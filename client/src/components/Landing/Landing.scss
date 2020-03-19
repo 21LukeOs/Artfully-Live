@@ -1,6 +1,6 @@
 .landing {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 160px);
   display: flex;
   flex-direction: column;
   justify-content: center;

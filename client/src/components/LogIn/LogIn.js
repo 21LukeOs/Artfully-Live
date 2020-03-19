@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
 import PageTitle from '../PageTitle/PageTitle';
 
@@ -42,7 +42,7 @@ const Login = ({ login, isAuthenticated }) => {
 						name='email'
 						value={email}
 						onChange={e => onChange(e)}
-            required
+            // required
             className='login__form-input'
 					/>
 				</div>
@@ -53,7 +53,7 @@ const Login = ({ login, isAuthenticated }) => {
 						name='password'
 						value={password}
 						onChange={e => onChange(e)}
-            minLength='6'
+            // minLength='6'
             className='login__form-input'
 					/>
 				</div>
