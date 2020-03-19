@@ -1,10 +1,11 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
 import './Logout.scss';
+import logo from '../../assets/images/logo3.png';
 
 const Logout = ({ auth: { isAuthenticated, loading }, logout }) => {
 	const authLinks = (
@@ -18,7 +19,7 @@ const Logout = ({ auth: { isAuthenticated, loading }, logout }) => {
 	return (
 		<div className='logout'>
 			<Link to='/'>
-				<img src='' alt='artfully live logo' />
+				<img src={logo} alt='artfully live logo' className='logout__img' />
 			</Link>
 			{!loading && <>{isAuthenticated && authLinks}</>}
 		</div>

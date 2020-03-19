@@ -1,0 +1,8 @@
+@import '../../style-presets/palette.scss';
+@import '../../style-presets/mixins.scss';
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
