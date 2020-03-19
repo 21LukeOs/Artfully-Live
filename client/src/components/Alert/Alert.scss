@@ -1,0 +1,22 @@
+@import '../../style-presets/palette.scss';
+@import '../../style-presets/mixins.scss';
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("../../assets/fonts/Raleway-Regular.ttf");
+}
+
+.alert {
+  padding: 10px;
+  margin-bottom: 5px;
+  width: 200px;
+  text-align: center;
+  font-family: 'Raleway';
+  border-radius: 10px;
+  color: $color3;
+  background-color: $color1;
+}
+
+.alert-danger {
+  background-color: rgba(224, 55, 55, 0.5);
+}

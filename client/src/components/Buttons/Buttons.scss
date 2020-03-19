@@ -1,12 +1,18 @@
 @import '../../style-presets/palette.scss';
 @import '../../style-presets/mixins.scss';
 
+@font-face {
+  font-family: 'Raleway';
+  src: url("../../assets/fonts/Raleway-Regular.ttf");
+}
+
 .button {
   width: 100%;
   padding: 20px;
   border-radius: 50px;
   color: $color8;
   font-size: 24px;
+  font-family: 'Raleway';
   background-color: $color1;
   background-color: rgb(29, 29, 29);
   border: 3px solid black;

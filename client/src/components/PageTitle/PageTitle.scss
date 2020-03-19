@@ -1,0 +1,14 @@
+@import '../../style-presets/palette.scss';
+@import '../../style-presets/mixins.scss';
+
+@font-face {
+  font-family: 'Trade Winds';
+  src: url("../../assets/fonts/TradeWinds-Regular.ttf");
+}
+
+.page-title {
+  margin: 0 0 30px 0;
+  font-size: 50px;
+  font-family: 'Trade Winds';
+  color: $color7;
+}

@@ -1,0 +1,60 @@
+@import '../../style-presets/palette.scss';
+@import '../../style-presets/mixins.scss';
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("../../assets/fonts/Raleway-Regular.ttf");
+}
+
+.login {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__form-input {
+    min-width: 200px;
+    padding: 10px;
+    margin-top:20px;
+    border-radius: 5px;
+    background-color: $color3;
+    border: 3px solid black;
+  }
+  
+  &__form-input:focus {
+    outline: transparent;
+  }
+
+  &__upload-submit {
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    font-family: 'Raleway';
+    color: $color3;
+    background-color: $color1;
+    background-color: rgb(29, 29, 29);
+    border: 2px solid black;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  &__upload-submit:active {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: scale(0.99);  
+  }
+  
+  &__upload-submit:focus {
+    outline: transparent;
+  }
+
+  &__already {
+    font-family: 'Raleway';
+    color: $color3;
+  }
+
+  &__register {
+    // text-decoration: none;
+    font-family: 'Raleway';
+    color: $color3;
+  }
+}

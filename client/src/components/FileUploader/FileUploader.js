@@ -23,8 +23,7 @@ const FileUploader = () => {
     try {
       const res = await axios.post('/api/photos', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-          'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWU2YjE5MmNlMmQ2YzI0ODFjZDUxYWUxIn0sImlhdCI6MTU4NDQ2MTU3NCwiZXhwIjoxNTg0NTMzNTc0fQ.6wT6pTd0MkkAzpDwKmEH0lvETbj3VbgX4DaL4BoJxzg'
+          'Content-Type': 'multipart/form-data'
         }
       });
       

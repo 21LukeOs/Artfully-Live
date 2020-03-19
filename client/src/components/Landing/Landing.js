@@ -6,10 +6,10 @@ import Buttons from '../Buttons/Buttons';
 const Landing = () => {
   return (
     <div className='landing'>
-      <Link to ='register' className='register'>
+      <Link to ='/register' className='landing__register'>
         <Buttons text="Register" />
       </Link>
-      <Link to='/login' className='log-in'>
+      <Link to='/login' className='landing__log-in'>
         <Buttons text="Log In" />
       </Link>
     </div>

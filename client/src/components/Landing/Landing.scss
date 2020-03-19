@@ -3,9 +3,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // align-items: center;
-}
 
-.log-in {
-  margin-top: 50px;
+  &__log-in {
+    margin-top: 50px;
+  }
 }
