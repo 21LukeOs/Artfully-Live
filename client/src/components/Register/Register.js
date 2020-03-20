@@ -6,7 +6,7 @@ import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 import './Register.scss';
-import PageTitle from '../PageTitle/PageTitle';
+import PageTitle from '../utility/PageTitle';
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
 	const [formData, setFormData] = useState({

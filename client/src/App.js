@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Logout from './components/Logout/Logout';
-import Alert from './components/Alert/Alert';
+import Alert from './components/utility/Alert';
 import Landing from './components/Landing/Landing';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile';
 import Upload from './components/Upload/Upload';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -35,8 +36,8 @@ const App = () => {
             <Route exact path='/' component={Landing} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
-            <Route exact path='/profile' component={Profile} />
-            <Route exact path ='/upload' component={Upload} />
+            <PrivateRoute exact path='/profile' component={Profile} />
+            <PrivateRoute exact path ='/upload' component={Upload} />
           </Switch>
         </div>
       </Router>

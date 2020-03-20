@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Landing.scss';
-import Buttons from '../Buttons/Buttons';
+import Buttons from '../utility/Buttons';
 
 const Landing = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PageTitle from '../PageTitle/PageTitle';
-import Buttons from '../Buttons/Buttons';
+import PageTitle from '../utility/PageTitle';
+import Buttons from '../utility/Buttons';
 // import PropTypes from 'prop-types';
 
 import './Profile.scss';

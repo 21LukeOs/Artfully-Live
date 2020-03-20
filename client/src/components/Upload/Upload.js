@@ -1,7 +1,7 @@
 import React from 'react';
 import './Upload.scss';
-import PageTitle from '../PageTitle/PageTitle';
-import FileUploader from '../FileUploader/FileUploader';
+import PageTitle from '../utility/PageTitle';
+import FileUploader from './FileUploader';
 
 const Upload = () => {
   return (

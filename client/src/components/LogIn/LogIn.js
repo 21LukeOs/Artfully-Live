@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-import PageTitle from '../PageTitle/PageTitle';
+import PageTitle from '../utility/PageTitle';
 
 import './Login.scss';
 
