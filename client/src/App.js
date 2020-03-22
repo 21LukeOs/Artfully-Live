@@ -7,6 +7,7 @@ import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile';
 import Upload from './components/Upload/Upload';
+import Gallery from './components/Gallery/Gallery';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 //Redux
@@ -37,7 +38,8 @@ const App = () => {
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
             <PrivateRoute exact path='/profile' component={Profile} />
-            <PrivateRoute exact path ='/upload' component={Upload} />
+            <PrivateRoute exact path='/upload' component={Upload} />
+            <Route exact path='/gallery' component={Gallery} />
           </Switch>
         </div>
       </Router>

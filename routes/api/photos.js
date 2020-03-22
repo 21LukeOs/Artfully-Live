@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
-const { check, validationResult } = require('express-validator');
+// const { check, validationResult } = require('express-validator');
 const formidable = require('formidable');
 const cloudinary = require('cloudinary').v2;
 require('dotenv').config();
@@ -30,15 +30,15 @@ router.post(
 		// ]
 	],
 	async (req, res) => {
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(400).json({ errors: errors.array() });
-		}
+		// const errors = validationResult(req);
+		// if (!errors.isEmpty()) {
+		// 	return res.status(400).json({ errors: errors.array() });
+		// }
 
 		try {
 			const form = formidable();
 
-			const formData = form.parse(req, (err, fields, files) => {
+			form.parse(req, (err, fields, files) => {
 				if (err) {
 					next(err);
 					return;
@@ -57,15 +57,15 @@ router.post(
               user: req.user.id
             });
 
-            const photo = await newPhoto.save();
+            await newPhoto.save();
 
-            res.json(photo);
+            // res.json(photo);
 					}
 				);
 
 				res.json({ fields, files });
       });
-      console.log(formData);
+      // console.log(formData);
 		} catch (err) {
 			console.log(err.message);
 			res.status(500).send('Server Error');

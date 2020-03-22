@@ -50,7 +50,7 @@ const FileUploader = () => {
 						className='post__upload-title post__upload-input'
 						value={fileTitle}
 						onChange={titleChange}
-						required
+						// required
 					/>
 					<label
 						htmlFor='file'
@@ -59,7 +59,8 @@ const FileUploader = () => {
 					</label>
 					<input
 						type='file'
-						id='file'
+            id='file'
+            name='file'
 						className='post__upload-file'
 						onChange={fileChange}
 					/>

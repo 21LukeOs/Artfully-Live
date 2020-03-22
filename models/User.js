@@ -15,8 +15,7 @@ const UserSchema = new mongoose.Schema({
 		required: true
 	},
 	vote: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'photo'
+    type: String
 	},
 	date: {
 		type: Date,

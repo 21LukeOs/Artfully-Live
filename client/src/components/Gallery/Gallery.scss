@@ -6,25 +6,17 @@
   src: url("../../assets/fonts/Raleway-Regular.ttf");
 }
 
-.profile {
+.gallery {
   width: 100%;
   min-height: calc(100vh - 200px);
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-family: 'Raleway';
   color: $color3;
 
-  &__header {
-    display: flex;
-    align-items: flex-start;
-    align-self: center;
-  }
 
-  &__header-wins {
-    margin: 0 0 0 30px;
-  }
-
-  &__upload, &__gallery {
-    margin-top: 50px;
+  &__profile {
+    width: 100%;
   }
 }
