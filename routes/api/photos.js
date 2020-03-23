@@ -57,7 +57,10 @@ router.post(
               user: req.user.id
             });
 
-            await newPhoto.save();
+            await newPhoto.save(function (err) {
+              if (err) return handleError(err);
+              // saved!
+            });
 
             // res.json(photo);
 					}

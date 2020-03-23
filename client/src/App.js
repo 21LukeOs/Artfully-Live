@@ -18,13 +18,12 @@ import setAuthToken from './utils/setAuthToken';
 
 import './App.scss';
 
-if(localStorage.token) {
-  setAuthToken(localStorage.token);
-}
-
 const App = () => {
   useEffect(() => {
-    store.dispatch(loadUser());
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+      store.dispatch(loadUser());
+    }
   }, []);
 
 	return (
