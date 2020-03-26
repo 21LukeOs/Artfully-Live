@@ -18,12 +18,12 @@ import setAuthToken from './utils/setAuthToken';
 
 import './App.scss';
 
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 const App = () => {
   useEffect(() => {
-    if (localStorage.token) {
-      setAuthToken(localStorage.token);
-      store.dispatch(loadUser());
-    }
+    store.dispatch(loadUser());
   }, []);
 
 	return (
@@ -38,7 +38,7 @@ const App = () => {
             <Route exact path='/login' component={Login} />
             <PrivateRoute exact path='/profile' component={Profile} />
             <PrivateRoute exact path='/upload' component={Upload} />
-            <Route exact path='/gallery' component={Gallery} />
+            <PrivateRoute exact path='/gallery' component={Gallery} />
           </Switch>
         </div>
       </Router>

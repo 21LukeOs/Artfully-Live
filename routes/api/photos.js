@@ -1,13 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
-// const { check, validationResult } = require('express-validator');
-const formidable = require('formidable');
+const { check, validationResult } = require('express-validator');
+const fileUpload = require('express-fileupload');
 const cloudinary = require('cloudinary').v2;
 require('dotenv').config();
 
 const User = require('../../models/User');
 const Photo = require('../../models/Photo');
+
+router.use(fileUpload({
+  useTempFiles : true,
+  tempFileDir : '/tmp/'
+}));
 
 cloudinary.config({
 	cloud_name: process.env.CLOUD_NAME,
@@ -22,53 +27,47 @@ cloudinary.config({
 router.post(
 	'/',
 	[
-		auth
-		// [
-		// 	check('text', 'Text is required')
-		// 		.not()
-		// 		.isEmpty()
-		// ]
+		auth,
+		[
+			check('title', 'Text is required')
+				.not()
+        .isEmpty(),
+      // check('file', 'File is required')
+			// 	.not()
+			// 	.isEmpty()
+		]
 	],
 	async (req, res) => {
-		// const errors = validationResult(req);
-		// if (!errors.isEmpty()) {
-		// 	return res.status(400).json({ errors: errors.array() });
-		// }
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(400).json({ errors: errors.array() });
+    }
 
+    const photo = await Photo.find({ user: req.user.id });
+
+    if (photo.length >= 1) {
+      return res.status(400).json({ msg: 'Already posted a photo' });
+    }
+    
 		try {
-			const form = formidable();
+      const title = req.body.title;
 
-			form.parse(req, (err, fields, files) => {
-				if (err) {
-					next(err);
-					return;
+      cloudinary.uploader.upload(
+        req.files.file.tempFilePath,
+        { folder: 'artfully/', public_id: title },
+        async function(error, result) {
+          
+          const newPhoto = new Photo({
+            title: title,
+            photo: result.secure_url,
+            user: req.user.id
+          });
+
+          const photo = await newPhoto.save();
+
+          res.json(photo); 
         }
-        
-        const title = fields.title;
-
-				cloudinary.uploader.upload(
-					files.file.path,
-					{ folder: 'artfully/', public_id: title },
-					async function(error, result) {
-            console.log(result, error);
-            const newPhoto = new Photo({
-              title: title,
-              photo: result.secure_url,
-              user: req.user.id
-            });
-
-            await newPhoto.save(function (err) {
-              if (err) return handleError(err);
-              // saved!
-            });
-
-            // res.json(photo);
-					}
-				);
-
-				res.json({ fields, files });
-      });
-      // console.log(formData);
+      );
 		} catch (err) {
 			console.log(err.message);
 			res.status(500).send('Server Error');

@@ -1,39 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import Spinner from "../utility/Spinner";
 import PageTitle from '../utility/PageTitle';
 import Buttons from '../utility/Buttons';
-// import PropTypes from 'prop-types';
+import { getCurrentProfile } from "../../actions/profile";
+import PropTypes from 'prop-types';
 
 import './Profile.scss';
 
-const Profile = props => {
-  // const galleryPics = (
-  //   <div>
-  //     <h1>Uploads Currently in Gallery</h1>
-  //     { user.pics.gallery.map(pic => {
-  //       return <img src={pic} alt="pic.title" className='profile__img' />
-  //     }) }
-  //   </div>
-  // )
+const Profile = ({
+  getCurrentProfile,
+	auth: { user },
+	profile: { profile, loading }
+}) => {
+	useEffect(() => {
+		getCurrentProfile();
+  }, [getCurrentProfile]);
 
-  // const votedFor = (
-  //   <div>
-  //     <h1>Voted For</h1>
-  //     <img src={photo.id} alt={photo.id.title} className='profile__img' />
-  //   </div>
-  // )
-
-  return (
+  return loading && profile === null ? (
+		<Spinner />
+	) : (
     <div className='profile'>
       <div className='profile__header'>
-        {/* `${props.user.name}'s` */}
+        {user && user.name}'s
         <PageTitle text='Profile' />
-        {/* `${ topThree ? topThree.length } Winners` */}
-        <p className='profile__header-wins'>0 Winners</p>
       </div>
-      {/* { user.pics.gallery && galleryPics } */}
-      {/* { user.vote ? votedFor : '1 Vote' } */}
-      <p className='profile__votes'>1 Vote</p>
+      <div className='profile__images'>
+        {profile !== null && profile.photos[0].photo ? (
+          <div className='profile__gallery-pic'>
+            <h3 className='profile__img-title'>Your Art</h3>
+            <div className='profile__img-cont'>
+              <img src={profile.photos[0].photo} alt={profile.photos[0].title} className='profile__gallery-img' />
+              <span className='profile__vote-cnt'>{profile.photos[0].votes.length}</span>
+            </div>
+            <h3 className='profile__img-title'>{profile.photos[0].title}</h3>
+          </div>
+        ) : (
+          null
+        )}
+        {profile !== null && profile.vote.vote ? (
+          <div className='profile__voted-on'>
+          <h3>Your Vote Goes to...</h3>
+          <img src={profile.vote.vote} alt="you have voted"/>
+        </div>
+        ) : (
+          '1 Vote'
+        )}
+      </div>
       <Link to ='/gallery' className='profile__gallery'>
         <Buttons text="Gallery" />
       </Link>
@@ -45,7 +59,14 @@ const Profile = props => {
 }
 
 Profile.propTypes = {
-
+  getCurrentProfile: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+	profile: PropTypes.object.isRequired
 }
 
-export default Profile;
+const mapStateToProps = state => ({
+	auth: state.auth,
+	profile: state.profile
+});
+
+export default connect(mapStateToProps, { getCurrentProfile })(Profile);

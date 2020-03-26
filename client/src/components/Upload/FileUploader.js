@@ -4,7 +4,8 @@ import axios from 'axios';
 
 const FileUploader = () => {
 	const [file, setFile] = useState('');
-	const [fileTitle, setFileTitle] = useState('');
+  const [fileTitle, setFileTitle] = useState('');
+  const [key, changeKey] = useState('');
 
 	const fileChange = e => {
 		setFile(e.target.files[0]);
@@ -19,7 +20,6 @@ const FileUploader = () => {
 		const formData = new FormData();
 		formData.append('file', file);
 		formData.append('title', fileTitle);
-
 		try {
 			const res = await axios.post('/api/photos', formData, {
 				headers: {
@@ -31,7 +31,8 @@ const FileUploader = () => {
 		} catch (err) {
 			console.error(err);
 		}
-		setFileTitle('');
+    setFileTitle('');
+    changeKey(Date.now());
 	};
 
 	return (
@@ -61,7 +62,8 @@ const FileUploader = () => {
 						type='file'
             id='file'
             name='file'
-						className='post__upload-file'
+            className='post__upload-file'
+            key={key}
 						onChange={fileChange}
 					/>
 					<button type='submit' className='post__upload-submit'>

@@ -1,9 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Landing.scss';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import Buttons from '../utility/Buttons';
 
-const Landing = () => {
+import './Landing.scss';
+
+const Landing = ({ isAuthenticated }) => {
+
+  //Redirect if logged in
+  if(isAuthenticated) {
+    return <Redirect to='/profile' />
+  }
+
   return (
     <div className='landing'>
       <Link to ='/register' className='landing__register'>
@@ -16,4 +26,12 @@ const Landing = () => {
   )
 };
 
-export default Landing;
+Landing.propTypes = {
+  isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps)(Landing);
