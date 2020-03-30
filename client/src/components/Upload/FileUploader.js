@@ -21,7 +21,7 @@ const FileUploader = () => {
 		formData.append('file', file);
 		formData.append('title', fileTitle);
 		try {
-			const res = await axios.post('/api/photos', formData, {
+			const res = await axios.post('/api/photos/up', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data'
 				}

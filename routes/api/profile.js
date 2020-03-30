@@ -19,7 +19,7 @@ router.get('/', auth, async (req, res) => {
 
     profile.vote = vote;
     profile.photos = photos;
-    // console.log(profile);
+    
 		res.json(profile);
 	} catch (err) {
 		console.log(err.message);

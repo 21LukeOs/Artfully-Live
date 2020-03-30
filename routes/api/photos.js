@@ -25,7 +25,7 @@ cloudinary.config({
 //@desc    Create a post
 //@access  Private
 router.post(
-	'/',
+	'/up',
 	[
 		auth,
 		[
@@ -74,5 +74,19 @@ router.post(
 		}
 	}
 );
+
+
+//@route   GET api/photos
+//@desc    Get all photos
+//@access  Private
+router.get('/', auth, async (req, res) => {
+  try {
+    const photos = await Photo.find().sort({ date: -1 });
+    res.json(photos);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;

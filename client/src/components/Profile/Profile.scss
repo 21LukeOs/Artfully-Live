@@ -44,7 +44,7 @@
 
   & img {
     max-width: 100%;
-    border-radius: 20px;
+    border-radius: 10px;
   }
 
   &__vote-cnt {
@@ -57,91 +57,20 @@
 
   &__voted-on {
     padding:  20px 60px;
-    max-width: 50%;
+    width: 50%;
+  }
+
+  &__vote-on, &__submit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding:  20px 60px;
+    width: 50%;
   }
 
   &__upload, &__gallery {
     margin-top: 50px;
   }
 }
-
-// @import '../../palette.scss';
-// @import '../../mixins.scss';
-
-// @font-face {
-//   font-family: 'Raleway';
-//   src: url("../../assets/fonts/Raleway-Regular.ttf");
-// }
-
-// .card-pic {
-//   padding:  20px 60px;
-//   max-width: 100%;
-
-//   @include tablet() {
-//     padding: 20px;
-//     max-width: 100%;
-//   }
-
-//   &__vote-bid {
-//     font-family: 'Raleway';
-//     color: $color2;
-//   }
-
-//   &__title {
-//     font-family: 'Raleway';
-//     color: $color2;
-//     text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
-//     height: 50px;
-
-//     @include tablet() {
-//       font-size: 18px;
-//     }
-    
-//     @include desktop() {
-//       font-size: 24px;
-//     }
-//   }
-
-//   &__artist {
-//     font-family: 'Raleway';
-//     color: $color2;
-//     text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
-
-//     @include tablet() {
-//       font-size: 16px;
-//     }
-
-//     @include desktop() {
-//       font-size: 18px;
-//     }
-//   }
-
-//   &__img {
-//     max-width: 100%;
-//     border-radius: 20px;
-//     box-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em white;
-//   }
-
-//   &__img:active {
-//     box-shadow: .5px .5px 1px white, 0 0 .5em white, 0 0 0.1em white;
-//     transform: scale(0.995);
-//   }
-
-//   &__img1 {
-//     max-width: 100%;
-//     border-radius: 20px;
-//     box-shadow: 1px 1px 2px yellow, 0 0 1em yellow, 0 0 0.2em yellow;
-//   }
-
-//   &__img1:active {
-//     box-shadow: .5px .5px 1px yellow, 0 0 .5em yellow, 0 0 0.1em yellow;
-//     transform: scale(0.995);
-//   }
-
-//   &__img2 {
-//     max-width: 100%;
-//     border-radius: 20px;
-//     box-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
-//     border: 2px solid black;
-//   }
-// }

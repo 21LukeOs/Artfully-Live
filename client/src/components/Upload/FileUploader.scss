@@ -7,25 +7,7 @@
 }
 
 .post {
-  min-height: calc(100vh - 260px);
-  // display: flex;
-  // justify-content: center;
-
-  // &__logo {
-  //   width: 240px;
-  //   padding: 20px;
-  // }
-
-  // &__title {
-  //   text-align: center;
-  // }
-
-  &__post-pic {
-    // min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  // min-height: calc(100vh - 260px);
 
   &__upload-form {
     display: flex;
@@ -38,7 +20,7 @@
   }
 
   &__upload-label {
-    margin: 30px 0 10px 0;
+    margin: 0 0 10px 0;
     color: $color3;
     font-family: 'Raleway';
   }

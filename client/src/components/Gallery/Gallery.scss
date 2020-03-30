@@ -15,6 +15,10 @@
   font-family: 'Raleway';
   color: $color3;
 
+  &__items {
+    display: flex;
+  }
+
 
   &__profile {
     width: 100%;
