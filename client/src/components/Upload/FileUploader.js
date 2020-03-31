@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { upload } from '../../actions/gallery';
 import './FileUploader.scss';
-import axios from 'axios';
 
-const FileUploader = () => {
+const FileUploader = ({ upload }) => {
 	const [file, setFile] = useState('');
-  const [fileTitle, setFileTitle] = useState('');
-  const [key, changeKey] = useState('');
+	const [fileTitle, setFileTitle] = useState('');
+	const [key, changeKey] = useState('');
 
 	const fileChange = e => {
 		setFile(e.target.files[0]);
@@ -20,19 +22,9 @@ const FileUploader = () => {
 		const formData = new FormData();
 		formData.append('file', file);
 		formData.append('title', fileTitle);
-		try {
-			const res = await axios.post('/api/photos/up', formData, {
-				headers: {
-					'Content-Type': 'multipart/form-data'
-				}
-			});
-
-			console.log(res);
-		} catch (err) {
-			console.error(err);
-		}
-    setFileTitle('');
-    changeKey(Date.now());
+		upload(formData);
+		setFileTitle('');
+		changeKey(Date.now());
 	};
 
 	return (
@@ -60,10 +52,10 @@ const FileUploader = () => {
 					</label>
 					<input
 						type='file'
-            id='file'
-            name='file'
-            className='post__upload-file'
-            key={key}
+						id='file'
+						name='file'
+						className='post__upload-file'
+						key={key}
 						onChange={fileChange}
 					/>
 					<button type='submit' className='post__upload-submit'>
@@ -75,4 +67,8 @@ const FileUploader = () => {
 	);
 };
 
-export default FileUploader;
+FileUploader.propTypes = {
+	upload: PropTypes.func.isRequired
+};
+
+export default connect(null, { upload })(FileUploader);

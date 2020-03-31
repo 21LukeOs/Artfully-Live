@@ -1,6 +1,8 @@
 import {
   GET_PHOTOS,
-  PHOTOS_ERROR
+  PHOTOS_ERROR,
+  UPLOAD,
+  UPLOAD_ERROR
 } from "../actions/types";
 
 const initialState = {
@@ -20,11 +22,18 @@ export default function(state = initialState, action) {
 				loading: false
       };
     case PHOTOS_ERROR:
+    case UPLOAD_ERROR:
 			return {
 				...state,
 				error: payload,
 				loading: false
-			};
+      };
+    case UPLOAD:
+      return {
+        ...state,
+        photos: [payload, ...state.photos],
+        loading: false
+      };
     default:
 			return state;
 	}

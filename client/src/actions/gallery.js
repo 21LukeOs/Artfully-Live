@@ -1,8 +1,11 @@
 import axios from "axios";
+import { setAlert } from './alert';
 
 import {
   GET_PHOTOS,
-  PHOTOS_ERROR
+  PHOTOS_ERROR,
+  UPLOAD,
+  UPLOAD_ERROR
 } from "./types";
 
 //Get photos
@@ -18,6 +21,36 @@ export const getPhotos = () => async dispatch =>  {
     dispatch({
       type: PHOTOS_ERROR,
       payload: { msg: err.statusText, status: err.status }
+    });
+  }
+};
+
+//Add post
+export const upload = formData => async dispatch =>  {
+  const config = {
+    header: {
+      'Content-Type': 'multipart/form-data'
+    }
+  }
+
+  try {
+    const res = await axios.post(`/api/photos/up`, formData, config);
+
+    dispatch({
+      type: UPLOAD,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Uploaded!', 'success'));
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: UPLOAD_ERROR
     });
   }
 };

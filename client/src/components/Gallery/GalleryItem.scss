@@ -1,19 +1,10 @@
 @import '../../style-presets/palette.scss';
 @import '../../style-presets/mixins.scss';
 
-@font-face {
-  font-family: 'Raleway';
-  src: url("../../assets/fonts/Raleway-Regular.ttf");
-}
-
-@font-face {
-  font-family: 'Coda';
-  src: url("../../assets/fonts/Coda-ExtraBold.ttf");
-}
 
 .gallery-item {
   padding:  20px;
-  max-width: 30%;
+  width: 33%;
 
   &__img-cont {
     position: relative;

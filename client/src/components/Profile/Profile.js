@@ -61,9 +61,6 @@ const Profile = ({
 			<Link to='/gallery' className='profile__gallery'>
 				<Buttons text='Gallery' />
 			</Link>
-			{/* <Link to='/upload' className='profile__upload'>
-				<Buttons text='Upload' />
-			</Link> */}
 		</div>
 	);
 };
