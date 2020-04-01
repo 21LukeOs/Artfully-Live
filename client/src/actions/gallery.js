@@ -5,7 +5,9 @@ import {
   GET_PHOTOS,
   PHOTOS_ERROR,
   UPLOAD,
-  UPLOAD_ERROR
+  UPLOAD_ERROR,
+  VOTE,
+  VOTE_ERROR
 } from "./types";
 
 //Get photos
@@ -51,6 +53,23 @@ export const upload = formData => async dispatch =>  {
 
     dispatch({
       type: UPLOAD_ERROR
+    });
+  }
+};
+
+//Add vote
+export const vote = id => async dispatch =>  {
+  try {
+    const res = await axios.put(`/api/photos/vote/${id}`);
+
+    dispatch({
+      type: VOTE,
+      payload: { id, vote: res.data }
+    });
+  } catch (err) {
+    dispatch({
+      type: VOTE_ERROR,
+      payload: { msg: err.statusText, status: err.status }
     });
   }
 };

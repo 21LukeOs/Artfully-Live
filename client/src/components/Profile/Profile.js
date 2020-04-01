@@ -44,7 +44,7 @@ const Profile = ({
 					</div>
 				) : (
 					<div className='profile__submit'>
-						<h3>Navigte to 'Upload' to submit your piece to gallery</h3>
+						<h3>Navigate to 'Gallery' to upload your work</h3>
 					</div>
 				)}
 				{profile !== null && profile.vote.vote ? (

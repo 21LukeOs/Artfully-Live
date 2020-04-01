@@ -2,7 +2,9 @@ import {
   GET_PHOTOS,
   PHOTOS_ERROR,
   UPLOAD,
-  UPLOAD_ERROR
+  UPLOAD_ERROR,
+  VOTE,
+  VOTE_ERROR
 } from "../actions/types";
 
 const initialState = {
@@ -23,6 +25,7 @@ export default function(state = initialState, action) {
       };
     case PHOTOS_ERROR:
     case UPLOAD_ERROR:
+    case VOTE_ERROR:
 			return {
 				...state,
 				error: payload,
@@ -33,6 +36,14 @@ export default function(state = initialState, action) {
         ...state,
         photos: [payload, ...state.photos],
         loading: false
+      };
+    case VOTE:
+			return {
+				...state,
+				photos: state.photos.map(photo =>
+					photo._id === payload.id ? { ...photo, votes: payload.vote } : photo
+				),
+				loading: false
       };
     default:
 			return state;

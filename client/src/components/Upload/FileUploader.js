@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { upload } from '../../actions/gallery';
+import Alert from '../utility/Alert';
 import './FileUploader.scss';
 
 const FileUploader = ({ upload }) => {
@@ -29,6 +30,7 @@ const FileUploader = ({ upload }) => {
 
 	return (
 		<div className='post'>
+      <Alert />
 			<div className='post__post-pic'>
 				<form className='post__upload-form' id='picForm' onSubmit={onSubmit}>
 					<label

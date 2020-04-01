@@ -9,10 +9,12 @@ require('dotenv').config();
 const User = require('../../models/User');
 const Photo = require('../../models/Photo');
 
-router.use(fileUpload({
-  useTempFiles : true,
-  tempFileDir : '/tmp/'
-}));
+router.use(
+	fileUpload({
+		useTempFiles: true,
+		tempFileDir: '/tmp/'
+	})
+);
 
 cloudinary.config({
 	cloud_name: process.env.CLOUD_NAME,
@@ -29,10 +31,10 @@ router.post(
 	[
 		auth,
 		[
-			check('title', 'Text is required')
+			check('title', 'Title is required')
 				.not()
-        .isEmpty(),
-      // check('file', 'File is required')
+				.isEmpty()
+			// check('file', 'File is required')
 			// 	.not()
 			// 	.isEmpty()
 		]
@@ -41,33 +43,32 @@ router.post(
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
 			return res.status(400).json({ errors: errors.array() });
-    }
+		}
 
-    const photo = await Photo.find({ user: req.user.id });
+		const photo = await Photo.find({ user: req.user.id });
 
-    if (photo.length >= 1) {
-      return res.status(400).json({ msg: 'Already posted a photo' });
-    }
-    
+		if (photo.length >= 1) {
+      return res.status(400).json({ errors: [{ msg: 'Already posted a photo' }] });
+		}
+
 		try {
-      const title = req.body.title;
+			const title = req.body.title;
 
-      cloudinary.uploader.upload(
-        req.files.file.tempFilePath,
-        { folder: 'artfully/', public_id: title },
-        async function(error, result) {
-          
-          const newPhoto = new Photo({
-            title: title,
-            photo: result.secure_url,
-            user: req.user.id
-          });
+			cloudinary.uploader.upload(
+				req.files.file.tempFilePath,
+				{ folder: 'artfully/', public_id: title },
+				async function(error, result) {
+					const newPhoto = new Photo({
+						title: title,
+						photo: result.secure_url,
+						user: req.user.id
+					});
 
-          const photo = await newPhoto.save();
+					const photo = await newPhoto.save();
 
-          res.json(photo); 
-        }
-      );
+					res.json(photo);
+				}
+			);
 		} catch (err) {
 			console.log(err.message);
 			res.status(500).send('Server Error');
@@ -75,18 +76,48 @@ router.post(
 	}
 );
 
-
 //@route   GET api/photos
 //@desc    Get all photos
 //@access  Private
 router.get('/', auth, async (req, res) => {
-  try {
-    const photos = await Photo.find().sort({ date: -1 });
-    res.json(photos);
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).send('Server Error');
-  }
+	try {
+		const photos = await Photo.find().sort({ date: -1 });
+		res.json(photos);
+	} catch (err) {
+		console.log(err.message);
+		res.status(500).send('Server Error');
+	}
+});
+
+//@route   PUT api/photos/vote/:id
+//@desc    Vote on photo
+//@access  Private
+router.put('/vote/:id', auth, async (req, res) => {
+	try {
+    const photo = await Photo.findById(req.params.id);
+    
+    const vote = await User.findById(req.user.id, 'vote');
+
+		// Check if the user has already voted
+		if (vote.vote) {
+		  return res.status(400).json({ msg: 'Already voted' });
+		}
+
+		await User.findOneAndUpdate(
+			{ _id: req.user.id },
+			{ vote: photo.photo },
+			{ new: true }
+		);
+
+		photo.votes.unshift({ user: req.user.id });
+
+		await photo.save();
+
+		res.json(photo.votes);
+	} catch (err) {
+		console.log(err.message);
+		res.status(500).send('Server Error');
+	}
 });
 
 module.exports = router;

@@ -17,9 +17,19 @@
 
   &__vote-cnt {
     background-color: $color7;
-    padding: 5px;
+    color: $color3;
+    font-size: large; 
+    padding: 10px;
+    border: none;
+    outline: transparent;
+    border-radius: 3px;
     position: absolute;
     bottom: 20px;
     left: 20px;
+
+    &:hover {
+      background-color: $color1;
+      cursor: pointer; 
+    }
   }
 }

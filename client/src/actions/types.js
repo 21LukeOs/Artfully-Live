@@ -14,3 +14,6 @@ export const GET_PHOTOS = 'GET_PHOTOS';
 export const PHOTOS_ERROR = 'PHOTOS_ERROR';
 export const UPLOAD = 'UPLOAD';
 export const UPLOAD_ERROR = 'UPLOAD_ERROR';
+export const VOTE = 'VOTE';
+export const VOTE_ERROR = 'VOTE_ERROR';
+
