@@ -13,6 +13,10 @@ const PhotoSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  uploader: {
+    type: String,
+    required: true
+  },
   votes: [
     {
       user: {

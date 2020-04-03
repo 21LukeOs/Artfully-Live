@@ -49,15 +49,32 @@
 
   &__vote-cnt {
     background-color: $color7;
-    padding: 5px;
+    font-size: 1.4rem; 
+    padding: 10px;
+    border-radius: 3px;
     position: absolute;
     bottom: 20px;
     left: 20px;
   }
 
+  &__img-title {
+    margin: 5px 0;
+  }
+
   &__voted-on {
     padding:  20px 60px;
     width: 50%;
+  }
+
+  &__img-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+
+    & * {
+      margin: 0;
+    }
   }
 
   &__vote-on, &__submit {

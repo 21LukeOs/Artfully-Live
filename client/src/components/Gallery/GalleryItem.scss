@@ -18,7 +18,7 @@
   &__vote-cnt {
     background-color: $color7;
     color: $color3;
-    font-size: large; 
+    font-size: 1.4rem; 
     padding: 10px;
     border: none;
     outline: transparent;
@@ -30,6 +30,17 @@
     &:hover {
       background-color: $color1;
       cursor: pointer; 
+    }
+  }
+
+  &__img-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+
+    & * {
+      margin: 0;
     }
   }
 }

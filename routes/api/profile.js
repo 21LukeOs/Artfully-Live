@@ -17,7 +17,7 @@ router.get('/', auth, async (req, res) => {
 
     const photos = await Photo.find({ user: req.user.id });
 
-    profile.vote = vote;
+    profile.vote = vote.vote;
     profile.photos = photos;
     
 		res.json(profile);

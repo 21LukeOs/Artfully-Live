@@ -45,23 +45,26 @@ router.post(
 			return res.status(400).json({ errors: errors.array() });
 		}
 
-		const photo = await Photo.find({ user: req.user.id });
+    const photo = await Photo.find({ user: req.user.id });
+    
+    const name = await User.findById(req.user.id, 'name');
 
 		if (photo.length >= 1) {
       return res.status(400).json({ errors: [{ msg: 'Already posted a photo' }] });
-		}
+    }
 
 		try {
 			const title = req.body.title;
 
 			cloudinary.uploader.upload(
 				req.files.file.tempFilePath,
-				{ folder: 'artfully/', public_id: title },
+				{ folder: 'artfully/', public_id: title, width: 500 },
 				async function(error, result) {
 					const newPhoto = new Photo({
 						title: title,
 						photo: result.secure_url,
-						user: req.user.id
+            user: req.user.id,
+            uploader: name.name
 					});
 
 					const photo = await newPhoto.save();
@@ -98,14 +101,19 @@ router.put('/vote/:id', auth, async (req, res) => {
     
     const vote = await User.findById(req.user.id, 'vote');
 
-		// Check if the user has already voted
-		if (vote.vote) {
+    // Check if the user has already voted
+		if (vote.vote.link) {
 		  return res.status(400).json({ msg: 'Already voted' });
-		}
-
+    }
+    
+    // Check if the photo is user's
+    if (photo.user.toString() === req.user.id) {
+      return res.status(400).json({ msg: 'Cannot vote for yourself' });
+    }
+    
 		await User.findOneAndUpdate(
 			{ _id: req.user.id },
-			{ vote: photo.photo },
+			{ vote: { link: photo.photo, title: photo.title, uploader: photo.uploader } },
 			{ new: true }
 		);
 

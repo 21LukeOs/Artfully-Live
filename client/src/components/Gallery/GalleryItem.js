@@ -5,7 +5,7 @@ import { vote } from '../../actions/gallery';
 
 import './GalleryItem.scss';
 
-const GalleryItem = ({ vote, photo: { _id, title, photo, votes } }) => {
+const GalleryItem = ({ vote, photo: { _id, title, photo, uploader, votes } }) => {
 	return (
 		<div className='gallery-item'>
 			<div className='gallery-item__img-cont'>
@@ -17,7 +17,10 @@ const GalleryItem = ({ vote, photo: { _id, title, photo, votes } }) => {
 					{votes.length}
 				</button>
 			</div>
-			<h3 className='gallery-item__img-title'>{title}</h3>
+      <div className='gallery-item__img-info'>
+        <h2 className='gallery-item__img-title'>{title}</h2>
+        <h4 className='gallery-item__img-uploader'>By: {uploader}</h4>
+      </div>
 		</div>
 	);
 };

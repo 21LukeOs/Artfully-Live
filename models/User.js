@@ -15,7 +15,15 @@ const UserSchema = new mongoose.Schema({
 		required: true
 	},
 	vote: {
-    type: String
+    link: {
+      type: String
+    },
+    title: {
+      type: String
+    },
+    uploader: {
+      type: String
+    }
 	},
 	date: {
 		type: Date,

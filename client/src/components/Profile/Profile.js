@@ -40,17 +40,21 @@ const Profile = ({
 								{profile.photos[0].votes.length}
 							</span>
 						</div>
-						<h3 className='profile__img-title'>{profile.photos[0].title}</h3>
+						<h2 className='profile__img-title'>{profile.photos[0].title}</h2>
 					</div>
 				) : (
 					<div className='profile__submit'>
 						<h3>Navigate to 'Gallery' to upload your work</h3>
 					</div>
 				)}
-				{profile !== null && profile.vote.vote ? (
+				{profile !== null && profile.vote.link ? (
 					<div className='profile__voted-on'>
 						<h3>Your Vote Goes to...</h3>
-						<img src={profile.vote.vote} alt='you have voted' />
+						<img src={profile.vote.link} alt='you have voted' />
+            <div className='profile__img-info'>
+              <h2 className='profile__img-title'>{profile.vote.title}</h2>
+              <h4 className='profile__img-uploader'>By: {profile.vote.uploader}</h4>
+            </div>
 					</div>
 				) : (
 					<div className='profile__vote-on'>
