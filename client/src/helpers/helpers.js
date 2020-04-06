@@ -1,6 +1,6 @@
 
 
-//Get the current users profile
+//Get the top three photos (by votes)
 export const getTopThree = photos => {
   const sorted = [...photos];
   sorted.sort(function (a, b) {
