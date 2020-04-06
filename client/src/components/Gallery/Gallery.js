@@ -6,6 +6,7 @@ import Spinner from '../utility/Spinner';
 import GalleryItem from './GalleryItem';
 import Upload from '../Upload/Upload';
 import { getPhotos } from '../../actions/gallery';
+import { getTopThree } from '../../helpers/helpers';
 
 import PageTitle from '../utility/PageTitle';
 import Buttons from '../utility/Buttons';
@@ -28,6 +29,12 @@ const Gallery = ({ getPhotos, gallery: { photos, loading } }) => {
 					<GalleryItem key={photo._id} photo={photo} />
 				))}
 			</div>
+      <PageTitle text='Top Three' />
+      <div className='gallery__top-three'>
+        {getTopThree(photos).map(photo => (
+          <GalleryItem key={photo._id + 2} photo={photo} />
+        ))}
+      </div>
       <Upload />
       <Link to='/profile' className='gallery__profile'>
         <Buttons text="Profile" />

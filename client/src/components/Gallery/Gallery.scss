@@ -19,8 +19,14 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 60px;
   }
 
+  &__top-three {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   &__profile {
     width: 100%;

@@ -49,6 +49,12 @@ router.post(
     
     const name = await User.findById(req.user.id, 'name');
 
+    const titleExists = await Photo.find({ title: req.body.title })
+
+    if (titleExists.length >= 1) {
+      return res.status(400).json({ errors: [{ msg: 'Choose a different title' }] });
+    }
+
 		if (photo.length >= 1) {
       return res.status(400).json({ errors: [{ msg: 'Already posted a photo' }] });
     }
