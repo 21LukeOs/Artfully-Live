@@ -3,7 +3,7 @@
 
 
 .gallery-item {
-  padding:  20px;
+  padding: 20px;
   width: 33%;
 
   &__img-cont {
@@ -13,12 +13,13 @@
   & img {
     max-width: 100%;
     border-radius: 10px;
+    cursor: zoom-in;
   }
 
   &__vote-cnt {
     background-color: $color7;
     color: $color3;
-    font-size: 1.4rem; 
+    font-size: 1.4rem;
     padding: 10px;
     border: none;
     outline: transparent;

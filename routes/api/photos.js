@@ -64,7 +64,7 @@ router.post(
 
 			cloudinary.uploader.upload(
 				req.files.file.tempFilePath,
-				{ folder: 'artfully/', public_id: title, width: 500 },
+				{ folder: 'artfully/', public_id: title, width: 1000 },
 				async function(error, result) {
 					const newPhoto = new Photo({
 						title: title,
