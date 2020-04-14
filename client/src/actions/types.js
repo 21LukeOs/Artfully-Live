@@ -9,6 +9,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const GET_PROFILE = 'GET_PROFILE';
+export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const GET_PHOTOS = 'GET_PHOTOS';
 export const PHOTOS_ERROR = 'PHOTOS_ERROR';
@@ -16,4 +17,3 @@ export const UPLOAD = 'UPLOAD';
 export const UPLOAD_ERROR = 'UPLOAD_ERROR';
 export const VOTE = 'VOTE';
 export const VOTE_ERROR = 'VOTE_ERROR';
-
