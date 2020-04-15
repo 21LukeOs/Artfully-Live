@@ -13,3 +13,5 @@ This is a beta version. Decided updates will include a server-side cron job whic
 ### Link to site
 
 The live website/app is here: https://artfullylive.herokuapp.com/
+
+As previously stated, this is a beta. No user information is collected or stored other than the email and password entered when registering. Dummy credentials can be used to gain access as long as the email is in standard format and the password is at least 6 characters long.
