@@ -12,4 +12,4 @@ This is a beta version. Decided updates will include a server-side cron job whic
 
 ### Link to site
 
-The live website/app will be here: https://floating-escarpment-13650.herokuapp.com/
+The live website/app will be here: https://artfullylive.herokuapp.com/
