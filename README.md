@@ -13,3 +13,5 @@ This is a beta version. Decided updates will include a server-side cron job whic
 ### Link to site
 
 The live website/app will be here: http://artfully.live
+
+As stated, this is a beta. SSL is not yet configured. No personal information other than the email and password entered when registering is stored. Dummy credentials can be used to gain access so long as the email given is in standard format, and the password is at least 6 characters long (obviously don't re-use any passwords used anywhere else).
