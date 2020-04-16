@@ -31,11 +31,21 @@
 
   &__images {
     display: flex;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__gallery-pic {
     padding:  20px 60px;
     max-width: 50%;
+
+    @media screen and (max-width: 600px) {
+      padding:  20px 0;
+      max-width: 80%;
+    }
   }
 
   &__img-cont {
@@ -63,7 +73,12 @@
 
   &__voted-on {
     padding:  20px 60px;
-    width: 50%;
+    max-width: 50%;
+
+    @media screen and (max-width: 600px) {
+      padding:  20px 0;
+      max-width: 80%;
+    }
   }
 
   &__img-info {

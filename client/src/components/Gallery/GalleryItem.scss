@@ -6,6 +6,11 @@
   padding: 20px;
   width: 33%;
 
+  @media screen and (max-width: 600px) {
+    padding:  20px 0;
+    width: 80%;
+  }
+
   &__img-cont {
     position: relative;
   }

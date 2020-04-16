@@ -4,7 +4,6 @@
 
 This is a MERN stack application which allows users to both upload their photography, and vote on their favourite images.
 
-### Desktop/Laptop version, mobile friendly coming very soon
 
 ### TODOS
 
