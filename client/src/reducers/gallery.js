@@ -1,6 +1,8 @@
 import {
   GET_PHOTOS,
   PHOTOS_ERROR,
+  GET_TOP_PHOTOS,
+  TOP_PHOTOS_ERROR,
   UPLOAD,
   UPLOAD_ERROR,
   VOTE,
@@ -8,7 +10,8 @@ import {
 } from "../actions/types";
 
 const initialState = {
-	photos: [],
+  photos: [],
+  top: [],
 	loading: true,
 	error: {}
 };
@@ -23,7 +26,14 @@ export default function(state = initialState, action) {
 				photos: payload,
 				loading: false
       };
+    case GET_TOP_PHOTOS:
+      return {
+				...state,
+				top: payload,
+				loading: false
+      };
     case PHOTOS_ERROR:
+    case TOP_PHOTOS_ERROR:
     case UPLOAD_ERROR:
     case VOTE_ERROR:
 			return {
@@ -41,6 +51,9 @@ export default function(state = initialState, action) {
 			return {
 				...state,
 				photos: state.photos.map(photo =>
+					photo._id === payload.id ? { ...photo, votes: payload.vote } : photo
+				),
+				top: state.top.map(photo =>
 					photo._id === payload.id ? { ...photo, votes: payload.vote } : photo
 				),
 				loading: false

@@ -6,17 +6,18 @@ import Spinner from '../utility/Spinner';
 import GalleryItem from './GalleryItem';
 import Upload from '../Upload/Upload';
 import { getPhotos } from '../../actions/gallery';
-import { getTopThree } from '../../helpers/helpers';
+import { getTopPhotos } from '../../actions/gallery';
 
 import PageTitle from '../utility/PageTitle';
 import Buttons from '../utility/Buttons';
 
 import './Gallery.scss';
 
-const Gallery = ({ getPhotos, gallery: { photos, loading } }) => {
+const Gallery = ({ getPhotos, getTopPhotos, gallery: { photos, top, loading } }) => {
 	useEffect(() => {
 		getPhotos();
-	}, [getPhotos]);
+		getTopPhotos();
+	}, [getPhotos, getTopPhotos]);
 
 	return loading ? (
 		<Spinner />
@@ -36,7 +37,7 @@ const Gallery = ({ getPhotos, gallery: { photos, loading } }) => {
 			)}
 			<PageTitle text='Top Three' />
 			<div className='gallery__top-three'>
-				{getTopThree(photos).map((photo) => (
+				{top.map((photo) => (
 					<GalleryItem key={photo._id + 2} photo={photo} />
 				))}
 			</div>
@@ -50,6 +51,7 @@ const Gallery = ({ getPhotos, gallery: { photos, loading } }) => {
 
 Gallery.propTypes = {
 	getPhotos: PropTypes.func.isRequired,
+	getTopPhotos: PropTypes.func.isRequired,
 	gallery: PropTypes.object.isRequired,
 };
 
@@ -57,4 +59,4 @@ const mapStateToProps = (state) => ({
 	gallery: state.gallery,
 });
 
-export default connect(mapStateToProps, { getPhotos })(Gallery);
+export default connect(mapStateToProps, { getPhotos, getTopPhotos })(Gallery);

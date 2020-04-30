@@ -123,11 +123,31 @@ router.put('/vote/:id', auth, async (req, res) => {
 			{ new: true }
 		);
 
+    photo.vote_count = photo.vote_count + 1;
 		photo.votes.unshift({ user: req.user.id });
 
 		await photo.save();
 
 		res.json(photo.votes);
+	} catch (err) {
+		console.log(err.message);
+		res.status(500).send('Server Error');
+	}
+});
+
+//@route   GET api/photos/top
+//@desc    Get top 3 photos
+//@access  Private
+router.get('/top', auth, async (req, res) => {
+	try {
+    const top = await Photo.find().sort({ vote_count: -1 }).limit(3);
+
+    const three = [...top];
+
+    const trim = three.filter(three => three.votes.length > 0);
+    // console.log(trim);
+    res.json(trim);
+    
 	} catch (err) {
 		console.log(err.message);
 		res.status(500).send('Server Error');

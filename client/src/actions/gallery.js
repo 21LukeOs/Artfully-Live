@@ -4,6 +4,8 @@ import { setAlert } from './alert';
 import {
   GET_PHOTOS,
   PHOTOS_ERROR,
+  GET_TOP_PHOTOS,
+  TOP_PHOTOS_ERROR,
   UPLOAD,
   UPLOAD_ERROR,
   VOTE,
@@ -22,6 +24,23 @@ export const getPhotos = () => async dispatch =>  {
   } catch (err) {
     dispatch({
       type: PHOTOS_ERROR,
+      payload: { msg: err.statusText, status: err.status }
+    });
+  }
+};
+
+//Get top 3
+export const getTopPhotos = () => async dispatch =>  {
+  try {
+    const res = await axios.get('/api/photos/top');
+
+    dispatch({
+      type: GET_TOP_PHOTOS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: TOP_PHOTOS_ERROR,
       payload: { msg: err.statusText, status: err.status }
     });
   }
